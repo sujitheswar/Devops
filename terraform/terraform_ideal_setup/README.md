@@ -57,7 +57,7 @@ output "dynamodb_table_name" { value = aws_dynamodb_table.demoterraform_lock.nam
 
 ```hcl
 backend "s3" {
-    bucket         = "043902793606-demoterraform-states"
+    bucket         = "<accountid>-demoterraform-states"
     key            = "ec2-demo/terraform.tfstate"
     region         = "us-east-2"
     dynamodb_table = "demoterraform-lock"
@@ -95,7 +95,7 @@ resource "aws_instance" "app_server" {
 
 3. **Terraform state**:
 
-   * Stored in S3 (`043902793606-demoterraform-states/ec2-demo/terraform.tfstate`)
+   * Stored in S3 (`accountid-demoterraform-states/ec2-demo/terraform.tfstate`)
    * Locked via DynamoDB to prevent multiple users from applying at the same time.
 
 ---
