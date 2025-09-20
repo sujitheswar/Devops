@@ -16,6 +16,7 @@ backend "s3" {
 > **NOTE:** you'll need a `config/dev.tfvars` too to set your other environment values.
 
 
+
 env=dev
 terraform get -update=true
 terraform init -backend-config=config/backend-${env}.conf
