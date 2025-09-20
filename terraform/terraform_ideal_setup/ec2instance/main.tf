@@ -8,7 +8,7 @@ terraform {
   required_version = ">= 1.2.0"
 
   backend "s3" {
-    bucket         = "043902793606-demoterraform-states" # same bucket from Step 1
+    bucket         = "account id-demoterraform-states" # same bucket from Step 1
     key            = "ec2-demo/terraform.tfstate"         # path inside S3 bucket
     region         = "us-east-2"
     dynamodb_table = "demoterraform-lock"
