@@ -15,10 +15,10 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0cfde0ea8edd312d4"
+  ami           = "ami-id"
   instance_type = "t3.micro"
-  key_name      = "ohio1309"
-  subnet_id     ="subnet-078043c28e92411d7"
+  key_name      = "okeynam9"
+  subnet_id     ="subnet-id"
   associate_public_ip_address = true
 
   tags = {
