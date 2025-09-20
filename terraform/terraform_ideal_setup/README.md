@@ -102,5 +102,51 @@ resource "aws_instance" "app_server" {
 **diagram showing how the backend and EC2 instance setup work together**, which makes it very easy to visualize.
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/54db71a6-d93f-4573-959f-f1d446518cd6" />
 
+Here’s the explanation of the Terraform setup diagram you generated:
+
+---
+
+### **1. Backend Setup**
+
+* **Terraform applies `backend-setup` first**.
+* Creates:
+
+  * **S3 bucket**: Stores Terraform state files.
+  * **DynamoDB table**: Provides state locking to prevent simultaneous changes.
+* This ensures **centralized state management**.
+
+---
+
+### **2. EC2 Instance Setup**
+
+* **Terraform applies `ec2-instance` next**.
+* Uses the **remote backend** configured in `backend-setup`:
+
+  * S3 bucket for storing state.
+  * DynamoDB table for locking.
+* Provisions **an EC2 instance** in the specified subnet.
+* The instance has a **public IP** and a **tag** for identification.
+
+---
+
+### **3. Flow**
+
+1. Apply `backend-setup` → S3 + DynamoDB created.
+2. Apply `ec2-instance` → Terraform uses the backend to store state and lock it.
+3. EC2 instance is created safely, avoiding conflicts from multiple users.
+
+---
+
+**Key Takeaways from the Diagram:**
+
+* **S3 + DynamoDB** = central backend for Terraform.
+* **EC2** = the actual infrastructure being provisioned.
+* **Remote state** ensures consistency and safety when multiple users or runs interact with the same infrastructure.
+
+---
+
+If you want, I can also **annotate the diagram with arrows and labels** showing exactly which Terraform resource corresponds to each component (S3, DynamoDB, EC2) for clearer understanding. Do you want me to do that?
+
+
 
 
