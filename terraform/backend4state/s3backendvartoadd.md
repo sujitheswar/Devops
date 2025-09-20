@@ -1,3 +1,5 @@
+'''hcl
+
 #in main.tf add this backend block
 
 #refer :https://developer.hashicorp.com/terraform/language/backend#partial-configuration
