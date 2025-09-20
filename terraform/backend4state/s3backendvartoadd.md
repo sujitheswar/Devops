@@ -1,4 +1,4 @@
-'''hcl
+```hcl
 
 #in main.tf add this backend block
 
