@@ -33,10 +33,10 @@ provider "aws" {
 
 ```hcl
 resource "aws_instance" "app_server" {
-  ami           = "ami-0cfde0ea8edd312d4"
+  ami           = "ami-id4"
   instance_type = "t3.micro"
-  key_name      = "ohio1309"
-  subnet_id     = "subnet-078043c28e92411d7"
+  key_name      = "keyname"
+  subnet_id     = "subnet-id"
   associate_public_ip_address = true
 
   tags = {
@@ -47,10 +47,10 @@ resource "aws_instance" "app_server" {
 
 * Launches an **EC2 instance**:
 
-  * **AMI**: `ami-0cfde0ea8edd312d4` (must be valid in `us-east-2`).
+  * **AMI**: `ami-id` (must be valid in `us-east-2`).
   * **Instance type**: `t3.micro` (free-tier eligible).
-  * **Key pair**: `ohio1309` (must exist in AWS account).
-  * **Subnet**: `subnet-078043c28e92411d7` (must belong to a VPC in us-east-2).
+  * **Key pair**: `keyname` (must exist in AWS account).
+  * **Subnet**: `subnet-id` (must belong to a VPC in us-east-2).
   * **Public IP**: Enabled.
   * **Tag**: `Name = Terraform_Demo`.
 
@@ -73,8 +73,8 @@ terraform apply -auto-approve
 
 ⚠️ **Things to double-check before running**:
 
-1. The AMI ID (`ami-0cfde0ea8edd312d4`) actually exists in **us-east-2** (AMI IDs differ by region).
-2. The `key_name` (`ohio1309`) already exists in your AWS account → otherwise Terraform will fail.
+1. The AMI ID (`ami-4`) actually exists in **us-east-2** (AMI IDs differ by region).
+2. The `key_name` (`ohio9`) already exists in your AWS account → otherwise Terraform will fail.
 3. The `subnet_id` is from the correct VPC and has internet access if you need SSH.
 4. Your AWS credentials are configured (`aws configure`).
 
