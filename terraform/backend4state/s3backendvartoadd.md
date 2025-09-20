@@ -3,6 +3,7 @@
 #refer :https://developer.hashicorp.com/terraform/language/backend#partial-configuration
 
 terrafrom{
+
 backend "s3" {
     bucket         = "043902793606-terraform-states"
     key            = "path/to/terraform.tfstate"  # e.g. "envs/prod/terraform.tfstate"
