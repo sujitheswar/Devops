@@ -102,7 +102,10 @@ resource "aws_instance" "app_server" {
 **diagram showing how the backend and EC2 instance setup work together**, which makes it very easy to visualize.
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/54db71a6-d93f-4573-959f-f1d446518cd6" />
 
-Here’s the explanation of the Terraform setup diagram you generated:
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/679954fa-7080-43c5-96da-87e6503dc05a" />
+
+
+explanation of the Terraform setup diagram:
 
 ---
 
@@ -145,7 +148,7 @@ Here’s the explanation of the Terraform setup diagram you generated:
 
 ---
 
-If you want, I can also **annotate the diagram with arrows and labels** showing exactly which Terraform resource corresponds to each component (S3, DynamoDB, EC2) for clearer understanding. Do you want me to do that?
+
 
 
 
