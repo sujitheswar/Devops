@@ -1,13 +1,3 @@
-Awesome! Here’s an even more polished, professional **README** for your Jenkins pipeline, with real badges you can customize and extra sections like Troubleshooting and Contributing.
-
----
-
-````markdown
-# 🐳 Jenkins Pipeline: Node.js Docker Container Test
-
-[![Jenkins Build Status](https://img.shields.io/jenkins/build?job=YourJobName&server=https%3A%2F%2Fjenkins.yourdomain.com&style=flat-square)](https://jenkins.yourdomain.com/job/YourJobName/)
-[![Docker Node.js](https://img.shields.io/badge/docker-node%3A17--alpine-blue?style=flat-square)](https://hub.docker.com/_/node)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](LICENSE)
 
 ---
 
