@@ -85,7 +85,3 @@ graph TD
 
 *Happy building! 🚀*
 
-```
-
----
-
