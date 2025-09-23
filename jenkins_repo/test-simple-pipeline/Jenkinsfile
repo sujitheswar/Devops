@@ -6,6 +6,10 @@ pipeline {
     stage('Test') {
       steps {
         sh 'node --version'
+        sh 'pwd'
+        sh 'df -h'
+        sh 'docker version'
+        sh 'docker ps -a'
       }
     }
   }
