@@ -72,7 +72,7 @@ graph TD
   C --> D[Run Commands: node --version, pwd, df -h]
   D --> E[End Pipeline]
 ```
-<img width="1972" height="3840" alt="Untitled diagram _ Mermaid Chart-2025-09-23-122004" src="https://github.com/user-attachments/assets/f04fb36a-d753-4ab1-81f6-f5ac84c28d96" />
+<img width="500" height="500" alt="Untitled diagram _ Mermaid Chart-2025-09-23-122004" src="https://github.com/user-attachments/assets/f04fb36a-d753-4ab1-81f6-f5ac84c28d96" />
 
 ---
 
