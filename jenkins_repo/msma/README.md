@@ -1,20 +1,35 @@
-Multi-stage-multi-agent Jenkins pipeline :
 
-Overall Pipeline Structure
 
+---
+
+# 🚀 multi-stage-multi-agent Jenkins Pipeline Explained
+---
+
+## 📋 Overview
+
+This Jenkins declarative pipeline uses **Docker containers** to isolate build environments per stage, ensuring clean and reproducible builds. It runs backend and frontend build steps inside respective Docker images and runs Docker CLI commands on the Jenkins host.
+
+---
+
+## ⚙️ Pipeline Structure
+
+```groovy
 pipeline {
   agent none
   stages {
-    // stages go here
+    // stages defined here
   }
 }
+```
 
+* **`pipeline`**: Root block defining the pipeline script.
+* **`agent none`**: No global Jenkins agent. Each stage defines its own environment.
 
-pipeline: This is the root block defining the whole Jenkins Pipeline script.
+---
 
-agent none: This means no default agent (executor) is assigned to the whole pipeline. Each stage will specify its own agent where it should run.
+## 🏗️ Stage 1: Back-end
 
-Stage: Back-end
+```groovy
 stage('Back-end') {
   agent {
     docker { image 'maven:3.8.1-adoptopenjdk-11' }
@@ -23,17 +38,16 @@ stage('Back-end') {
     sh 'mvn --version'
   }
 }
+```
 
+* Runs inside **Maven + OpenJDK 11** container.
+* Verifies Maven installation by printing version.
 
-stage('Back-end'): Defines a stage named Back-end.
+---
 
-agent { docker { image '...' } }: This tells Jenkins to run the steps inside a Docker container using the maven:3.8.1-adoptopenjdk-11 image.
+## 🌐 Stage 2: Front-end
 
-steps: The actual commands to execute in this stage.
-
-sh 'mvn --version': Runs mvn --version inside the container, which checks the Maven version. This validates Maven is available and working.
-
-Stage: Front-end
+```groovy
 stage('Front-end') {
   agent {
     docker { image 'node:17-alpine' }
@@ -42,15 +56,16 @@ stage('Front-end') {
     sh 'node --version'
   }
 }
+```
 
+* Runs inside **Node.js 17 Alpine** container.
+* Checks Node.js version for validation.
 
-Similar structure to the Back-end stage.
+---
 
-Runs inside a node:17-alpine Docker container.
+## 🐳 Stage 3: Docker Commands
 
-Executes node --version to verify Node.js is installed and its version.
-
-Stage: dockercommands
+```groovy
 stage('dockercommands') {
   agent any
   steps {
@@ -58,32 +73,41 @@ stage('dockercommands') {
     sh 'docker ps'
   }
 }
+```
 
+* Runs **on the Jenkins host agent** (not inside a container).
+* Prints Docker version and lists running Docker containers.
+* **Requires Docker installed and accessible on the host.**
 
-agent any: Run this stage on any available Jenkins agent (doesn’t use Docker).
+---
 
-Steps:
+## 🔑 Key Highlights
 
-docker --version: Prints Docker version installed on the Jenkins agent.
+| Feature                        | Explanation                                                           |
+| ------------------------------ | --------------------------------------------------------------------- |
+| **Agent per stage**            | Each stage runs in its own environment (Docker container or agent).   |
+| **Docker container isolation** | Clean, consistent builds with pre-configured environments.            |
+| **Host Docker commands**       | Docker CLI commands executed directly on Jenkins host for management. |
 
-docker ps: Lists running Docker containers on the host machine.
+---
 
-Note: This stage requires that Docker is installed and accessible on the Jenkins agent machine itself, not inside a Docker container.
+## 📝 Summary
 
-Key points:
+| Stage Name         | Environment                 | Purpose                         |
+| ------------------ | --------------------------- | ------------------------------- |
+| **Back-end**       | Maven + AdoptOpenJDK Docker | Build and verify backend tools  |
+| **Front-end**      | Node.js Alpine Docker       | Build and verify frontend tools |
+| **dockercommands** | Jenkins Host (any agent)    | Run Docker CLI commands on host |
 
-Agent none + per-stage agents: This is useful if different stages need different environments or tools.
+---
 
-Using Docker agents: Each build stage spins up a Docker container with the specified image to run commands. This makes your builds clean and consistent.
+## 🚀 Get Started
 
-dockercommands stage runs on host: Since it uses agent any (not Docker), it accesses the host machine’s Docker daemon.
+1. Ensure Jenkins agents have Docker installed and configured.
+2. Place this Jenkinsfile in your project repo.
+3. Trigger the pipeline in Jenkins.
+4. Enjoy clean and consistent builds powered by Docker!
 
-Summary:
+---
+<img width="3840" height="2669" alt="Untitled diagram _ Mermaid Chart-2025-09-23-121102" src="https://github.com/user-attachments/assets/dc7f8c94-96f6-47ba-8ec5-308b3100d69b" />
 
-pipeline runs these steps:
-
-Build or test backend code using Maven in a Maven+Java container.
-
-Build or test frontend code using Node.js in a Node container.
-
-Run Docker commands (docker --version and docker ps) on the Jenkins agent host.
