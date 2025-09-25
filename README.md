@@ -7,3 +7,7 @@ Terraform :Terraform is an open-source tool by HashiCorp for managing infrastruc
 
 >This terraform folder (https://github.com/sujitheswar/Devops/tree/main/terraform) consist of configuration files which is used to automate manual tasks in secure and efficient manner
 
+Jenkins_repo :Jenkins is an open-source automation server used primarily for Continuous Integration (CI) and Continuous Delivery/Deployment (CD) in software development.
+
+>This jenkins_repo folder (https://github.com/sujitheswar/Devops/tree/main/Jenkins_repo) consisit of jenkins fileswhich used to create CI/CD pipelins
+
