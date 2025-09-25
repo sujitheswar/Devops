@@ -1,0 +1,1 @@
+>**Note**To run CI/CD of this pipeline you need create .github in root where here Devops is root dir and Github is subdir post that .github dir exist so it doesn't run actions .so, to run i need to create DevOps/.github/workflows/firstactions.yml file
